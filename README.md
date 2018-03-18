@@ -1,6 +1,18 @@
-frontend-nanodegree-arcade-game
-===============================
+# Udacity frogger game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Project Overview
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+This game is a classic arcade-game. The goal of the player is it to reach the water at the top of the field. He must navigate through deadly bugs by using the arrow-keys. If he touches one of the bugs the game restarts. 
+
+## How to run the app
+
+1. Download the zip file or clone the repo to your Desktop.
+2. Open `index.html` in your browser.
+
+## Goal of the Project
+
+The goal of this project was to practice writing object-orientated javascript. Almost everything of the code was provided by udacity. Only the functionality of the bugs and the player had to be finished (in the `app.js` file).
+
+## How to cheat
+
+Ofcurse there is a little cheat implemented. The player moves quite slowly, what makes the game hard. If he moves four times in a row downwards, his speed will be quintupled (only once)! 
