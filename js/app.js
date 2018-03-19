@@ -1,3 +1,5 @@
+"use strict";
+
 // Enemies our player must avoid
 class Enemy {
 	constructor(x, y, speed) {
@@ -21,23 +23,6 @@ class Enemy {
 	}
 }
 
-function deathTouch(player, allEnemies) {
-	for (let bug of allEnemies) {
-		if (bug.posX - 62 < player.posX && player.posX < bug.posX + 60) {
-			if (bug.posY - 60 < player.posY && player.posY < bug.posY + 30) {
-				return true;
-			};
-		};
-	};
-};
-
-function winGame(player) {
-	if (player.posY <= 0) {
-		return true;
-		console.log("WINNNN");
-	};
-};
-
 // The Player Class
 class Player {
 	constructor({
@@ -53,15 +38,22 @@ class Player {
 	}
 	// Update the players position
 	update() {
-		if (deathTouch(this, allEnemies)) {
+		// checks if an enemie touches and kills the player
+		for (let bug of allEnemies) {
+			if (bug.posX - 85 < this.posX && this.posX < bug.posX + 85) {
+				if (bug.posY - 60 < this.posY && this.posY < bug.posY + 75) {
+					this.posX = 200;
+					this.posY = 400;
+				};
+			};
+		};
+		// checks if player reaches the water and wins the game
+		if (this.posY <= 0) {
+			console.log("WINNNN");
 			this.posX = 200;
 			this.posY = 400;
 		};
-		if (winGame(this)) {
-			this.posX = 200;
-			this.posY = 400;
-		};
-		//CHEAT: if 4 times in a row pressed "down": get more speed!!
+		//hidden CHEAT: if 4 times in a row pressed "down": get more speed!!
 		if (this.cheatArray[this.cheatArray.length - 1] == "down") {
 			if (this.cheatArray[this.cheatArray.length - 2] == "down") {
 				if (this.cheatArray[this.cheatArray.length - 3] == "down") {
@@ -96,15 +88,15 @@ class Player {
 				};
 				break;
 			case "left":
-				if (this.posX - this.speed < -50) {
-					this.posX = -50;
+				if (this.posX - this.speed < -10) {
+					this.posX = -10;
 				} else {
 					this.posX -= this.speed;
 				};
 				break;
 			case "right":
-				if (this.posX + this.speed > 450) {
-					this.posX = 450;
+				if (this.posX + this.speed > 410) {
+					this.posX = 410;
 				} else {
 					this.posX += this.speed;
 				};
@@ -112,12 +104,12 @@ class Player {
 			default:
 				console.log("use Left-, Ritht-, Up- and Down-Key to move");
 		}
-	}
+	}	
 }
 
 const enemy1 = new Enemy(10, 70, 1);
 const enemy2 = new Enemy(10, 150, 2);
-const enemy3 = new Enemy(200, 230, 3);
+const enemy3 = new Enemy(10, 230, 3);
 
 const allEnemies = [];
 
@@ -137,6 +129,6 @@ document.addEventListener('keyup', function (e) {
 		40: 'down'
 	};
 	player.handleInput(allowedKeys[e.keyCode]);
-	//cheat: if 4 times in a row pressed "down": get more speed!!
+	//hidden cheat: if 4 times in a row pressed "down": get more speed!!
 	player.cheatArray.push(allowedKeys[e.keyCode]);
 });
