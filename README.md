@@ -8,6 +8,7 @@ This game is a classic arcade-game. The goal of the player is it to reach the wa
 
 1. Download the zip file or clone the repo to your Desktop.
 2. Open `index.html` in your browser.
+3. Or click on this [Link](https://markusmiksch.github.io/Udacity-Frogger-Game/)
 
 ## Goal of the Project
 
